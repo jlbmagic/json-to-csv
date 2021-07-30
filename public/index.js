@@ -5,9 +5,8 @@ import "regenerator-runtime/runtime.js";
 const json2csv = require("csvjson-json2csv");
 
 window.getAndProcessJSON = (json, params) => {
-  // alert("Get");
-
-  const csv = json2csv(json, JSON.parse(params));
+  console.log(JSON.parse(params));
+  const csv = json2csv(JSON.parse(json), { flatten: true });
   const obj = btoa(csv);
   FileMaker.PerformScript("Return Data", obj);
 };
